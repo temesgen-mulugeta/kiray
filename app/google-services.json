@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "470423595883",
+    "firebase_url": "https://kiray-10ca5-default-rtdb.firebaseio.com",
+    "project_id": "kiray-10ca5",
+    "storage_bucket": "kiray-10ca5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:470423595883:android:b54eb213d1e7d24fcf7a2e",
+        "android_client_info": {
+          "package_name": "com.example.kiray"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "470423595883-mmd3ulbllugv6euspa80avpd9l5mfqcr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBCI7uCUlSp0UE7u6uyJjV5u52hySULIdw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "470423595883-mmd3ulbllugv6euspa80avpd9l5mfqcr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
