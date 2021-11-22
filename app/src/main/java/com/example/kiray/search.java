@@ -124,7 +124,7 @@ public class search extends AppCompatActivity {
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
 
-        retrivePicture();
+        //retrivePicture();
 
         sidenav.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -192,152 +192,148 @@ public class search extends AppCompatActivity {
         });
 
 
-        DivisionsStringVariable=getResources().getStringArray(R.array.DivisionsString);// ei variable e values er declare kora string recieve korbe
-        DhakaDivisionDistrictStringVariable=getResources().getStringArray(R.array.DhakaDivisionsDistrictsString);//same
-        SylhetDivisionDistrictStringVariable=getResources().getStringArray(R.array.SylhetDivisionDistrictString);//same
-        BarishalDivisionDistrictStringVariable=getResources().getStringArray(R.array.BarishalDivisionsDistrictsString);
-        MymensinghDivisionDistrictStringVariable=getResources().getStringArray(R.array.MymensinghDivisionsDistrictsString);
-        RajshahiDivisionDistrictStringVariable=getResources().getStringArray(R.array.RajshahiDivisionsDistrictsString);
-        KhulnaDivisionDistrictStringVariable=getResources().getStringArray(R.array.KhulnaDivisionsDistrictsString);
-        RangpurDivisionDistrictStringVariable=getResources().getStringArray(R.array.RangpurDivisionsDistrictsString);
-        ChittagongDivisionDistrictStringVariable=getResources().getStringArray(R.array.ChittagongDivisionsDistrictsString);
+//        DivisionsStringVariable=getResources().getStringArray(R.array.DivisionsString);// ei variable e values er declare kora string recieve korbe
+//        DhakaDivisionDistrictStringVariable=getResources().getStringArray(R.array.DhakaDivisionsDistrictsString);//same
+//        SylhetDivisionDistrictStringVariable=getResources().getStringArray(R.array.SylhetDivisionDistrictString);//same
+//        BarishalDivisionDistrictStringVariable=getResources().getStringArray(R.array.BarishalDivisionsDistrictsString);
+//        MymensinghDivisionDistrictStringVariable=getResources().getStringArray(R.array.MymensinghDivisionsDistrictsString);
+//        RajshahiDivisionDistrictStringVariable=getResources().getStringArray(R.array.RajshahiDivisionsDistrictsString);
+//        KhulnaDivisionDistrictStringVariable=getResources().getStringArray(R.array.KhulnaDivisionsDistrictsString);
+//        RangpurDivisionDistrictStringVariable=getResources().getStringArray(R.array.RangpurDivisionsDistrictsString);
+//        ChittagongDivisionDistrictStringVariable=getResources().getStringArray(R.array.ChittagongDivisionsDistrictsString);
+//
+//        RentRangeStringVariable=getResources().getStringArray(R.array.Rent);
+//        RoomsStringVariable=getResources().getStringArray(R.array.Room);
+//
+//        DhakaDistrictAreaStringVariable=getResources().getStringArray(R.array.dhakaDisArea);
+//        GazipurDistrictAreaStringVariable=getResources().getStringArray(R.array.gazipurDisArea);
+//
+//
+//        ArrayAdapter<String> DivisionAdapter = new ArrayAdapter<String>(this, R.layout.spinnerdisplay, R.id.spinnerDisplay, DivisionsStringVariable);// ei adapter division er nam gula ke spinner display layout er maddome adapter e set korbe
+//        //SelectedDivision=DivisionSpinnerVariable.getSelectedItem().toString();
+//        ArrayAdapter<String> SylhetDivisionAdapter = new ArrayAdapter<String>(this, R.layout.spinnerdisplay, R.id.spinnerDisplay, SylhetDivisionDistrictStringVariable);//same
+//        ArrayAdapter<String> DhakaDivisionAdapter = new ArrayAdapter<String>(this, R.layout.spinnerdisplay, R.id.spinnerDisplay, DhakaDivisionDistrictStringVariable);//same
+//        ArrayAdapter<String> BarishalDivisionAdapter = new ArrayAdapter<String>(this, R.layout.spinnerdisplay, R.id.spinnerDisplay, BarishalDivisionDistrictStringVariable);//same
+//        ArrayAdapter<String> MymensinghDivisionAdapter = new ArrayAdapter<String>(this, R.layout.spinnerdisplay, R.id.spinnerDisplay, MymensinghDivisionDistrictStringVariable);//same
+//        ArrayAdapter<String> KhulnaDivisionAdapter = new ArrayAdapter<String>(this, R.layout.spinnerdisplay, R.id.spinnerDisplay, KhulnaDivisionDistrictStringVariable);//same
+//        ArrayAdapter<String> RajshahiDivisionAdapter = new ArrayAdapter<String>(this, R.layout.spinnerdisplay, R.id.spinnerDisplay, RajshahiDivisionDistrictStringVariable);//same
+//        ArrayAdapter<String> RangpurDivisionAdapter = new ArrayAdapter<String>(this, R.layout.spinnerdisplay, R.id.spinnerDisplay, RangpurDivisionDistrictStringVariable);//same
+//        ArrayAdapter<String> ChittagongDivisionAdapter = new ArrayAdapter<String>(this, R.layout.spinnerdisplay, R.id.spinnerDisplay, ChittagongDivisionDistrictStringVariable);//same
+//        ArrayAdapter<String> RentRangeAdapter = new ArrayAdapter<String>(this, R.layout.spinnerdisplay, R.id.spinnerDisplay, RentRangeStringVariable);//same
+//        ArrayAdapter<String> RoomsAdapter = new ArrayAdapter<String>(this, R.layout.spinnerdisplay, R.id.spinnerDisplay, RoomsStringVariable);//same
+//
+//        ArrayAdapter<String> DhakaDistrictAreaAdapter = new ArrayAdapter<String>(this, R.layout.spinnerdisplay, R.id.spinnerDisplay, DhakaDistrictAreaStringVariable);//same
+//        ArrayAdapter<String> GazipurDistrictAreaAdapter = new ArrayAdapter<String>(this, R.layout.spinnerdisplay, R.id.spinnerDisplay, GazipurDistrictAreaStringVariable);//same
+//
+//        RentRangeSpinnerVariable.setAdapter(RentRangeAdapter);
+//        RoomsSpinnerVariable.setAdapter(RoomsAdapter);
+//        DivisionSpinnerVariable.setAdapter(DivisionAdapter);// set kora divison gulu spinner e show korbe
 
-        RentRangeStringVariable=getResources().getStringArray(R.array.Rent);
-        RoomsStringVariable=getResources().getStringArray(R.array.Room);
-
-        DhakaDistrictAreaStringVariable=getResources().getStringArray(R.array.dhakaDisArea);
-        GazipurDistrictAreaStringVariable=getResources().getStringArray(R.array.gazipurDisArea);
-
-        DivisionSpinnerVariable=(Spinner) findViewById(R.id.spinnerDivison); // divison spinner jeta activity_search.xml e ase oita ke variable e set korbe
-        DistrictSpinnerVariable =(Spinner) findViewById(R.id.spinnerDistrict);//same
-        AreaSpinnerVariable=(Spinner)findViewById(R.id.spinnerArea);
-        RentRangeSpinnerVariable=(Spinner)findViewById(R.id.spinnerRentRange);
-        RoomsSpinnerVariable=(Spinner)findViewById(R.id.spinnerRooms);
-
-        ArrayAdapter<String> DivisionAdapter = new ArrayAdapter<String>(this, R.layout.spinnerdisplay, R.id.spinnerDisplay, DivisionsStringVariable);// ei adapter division er nam gula ke spinner display layout er maddome adapter e set korbe
-        //SelectedDivision=DivisionSpinnerVariable.getSelectedItem().toString();
-        ArrayAdapter<String> SylhetDivisionAdapter = new ArrayAdapter<String>(this, R.layout.spinnerdisplay, R.id.spinnerDisplay, SylhetDivisionDistrictStringVariable);//same
-        ArrayAdapter<String> DhakaDivisionAdapter = new ArrayAdapter<String>(this, R.layout.spinnerdisplay, R.id.spinnerDisplay, DhakaDivisionDistrictStringVariable);//same
-        ArrayAdapter<String> BarishalDivisionAdapter = new ArrayAdapter<String>(this, R.layout.spinnerdisplay, R.id.spinnerDisplay, BarishalDivisionDistrictStringVariable);//same
-        ArrayAdapter<String> MymensinghDivisionAdapter = new ArrayAdapter<String>(this, R.layout.spinnerdisplay, R.id.spinnerDisplay, MymensinghDivisionDistrictStringVariable);//same
-        ArrayAdapter<String> KhulnaDivisionAdapter = new ArrayAdapter<String>(this, R.layout.spinnerdisplay, R.id.spinnerDisplay, KhulnaDivisionDistrictStringVariable);//same
-        ArrayAdapter<String> RajshahiDivisionAdapter = new ArrayAdapter<String>(this, R.layout.spinnerdisplay, R.id.spinnerDisplay, RajshahiDivisionDistrictStringVariable);//same
-        ArrayAdapter<String> RangpurDivisionAdapter = new ArrayAdapter<String>(this, R.layout.spinnerdisplay, R.id.spinnerDisplay, RangpurDivisionDistrictStringVariable);//same
-        ArrayAdapter<String> ChittagongDivisionAdapter = new ArrayAdapter<String>(this, R.layout.spinnerdisplay, R.id.spinnerDisplay, ChittagongDivisionDistrictStringVariable);//same
-        ArrayAdapter<String> RentRangeAdapter = new ArrayAdapter<String>(this, R.layout.spinnerdisplay, R.id.spinnerDisplay, RentRangeStringVariable);//same
-        ArrayAdapter<String> RoomsAdapter = new ArrayAdapter<String>(this, R.layout.spinnerdisplay, R.id.spinnerDisplay, RoomsStringVariable);//same
-
-        ArrayAdapter<String> DhakaDistrictAreaAdapter = new ArrayAdapter<String>(this, R.layout.spinnerdisplay, R.id.spinnerDisplay, DhakaDistrictAreaStringVariable);//same
-        ArrayAdapter<String> GazipurDistrictAreaAdapter = new ArrayAdapter<String>(this, R.layout.spinnerdisplay, R.id.spinnerDisplay, GazipurDistrictAreaStringVariable);//same
-
-        RentRangeSpinnerVariable.setAdapter(RentRangeAdapter);
-        RoomsSpinnerVariable.setAdapter(RoomsAdapter);
-        DivisionSpinnerVariable.setAdapter(DivisionAdapter);// set kora divison gulu spinner e show korbe
-
-        DivisionSpinnerVariable.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                if(position==2)
-                {
-                    DistrictSpinnerVariable.setAdapter(DhakaDivisionAdapter);
-                    DistrictSpinnerVariable.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-                        @Override
-                        public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                            if(position==0) {
-                                AreaSpinnerVariable.setAdapter(DhakaDistrictAreaAdapter);
-                                searchPoint="";
-                                searchPoint= AreaSpinnerVariable.getSelectedItem().toString();
-
-
-                            }
-                            if(position==1) {
-                                AreaSpinnerVariable.setAdapter(GazipurDistrictAreaAdapter);
-                                searchPoint="";
-                                searchPoint= AreaSpinnerVariable.getSelectedItem().toString();
-
-
-
-                            }
-
-                        }
-
-                        @Override
-                        public void onNothingSelected(AdapterView<?> parent) {
-
-                        }
-                    });
-                }
-                if(position==7)
-                {
-                    DistrictSpinnerVariable.setAdapter(SylhetDivisionAdapter);
-                }
-                if(position==0)
-                {
-                    DistrictSpinnerVariable.setAdapter(BarishalDivisionAdapter);
-                }
-                if(position==1)
-                {
-                    DistrictSpinnerVariable.setAdapter(ChittagongDivisionAdapter);
-                }
-                if(position==3)
-                {
-                    DistrictSpinnerVariable.setAdapter(KhulnaDivisionAdapter);
-                }
-                if(position==4)
-                {
-                    DistrictSpinnerVariable.setAdapter(MymensinghDivisionAdapter);
-                }
-                if(position==5)
-                {
-                    DistrictSpinnerVariable.setAdapter(RajshahiDivisionAdapter);
-                }
-                if(position==6)
-                {
-                    DistrictSpinnerVariable.setAdapter(RangpurDivisionAdapter);
-                }
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
-        });
-
-        imageButtonSearch=(ImageButton)findViewById(R.id.imageButtonSearch);
-        imageButtonSearch.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                passData();
-                //  startActivity(new Intent(search.this, SearchResults.class));
-            }
-        });
-    }
-
-
-    private void retrivePicture() {
-        databaseReference.child(auth.getCurrentUser().getUid()).addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-
-                if (snapshot.hasChild("image")) {
-                    String image = snapshot.child("image").getValue().toString();
-                    Picasso.get().load(image).into(SNpropic);
-                }
-
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
-    }
-    private void passData() {
-
-        Intent intent = new Intent(search.this, SearchResults.class);
-        intent.putExtra("message", searchPoint);
-        startActivity(intent);
-    }
+//        DivisionSpinnerVariable.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+//            @Override
+//            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+//                if(position==2)
+//                {
+//                    DistrictSpinnerVariable.setAdapter(DhakaDivisionAdapter);
+//                    DistrictSpinnerVariable.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+//                        @Override
+//                        public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+//                            if(position==0) {
+//                                AreaSpinnerVariable.setAdapter(DhakaDistrictAreaAdapter);
+//                                searchPoint="";
+//                                searchPoint= AreaSpinnerVariable.getSelectedItem().toString();
+//
+//
+//                            }
+//                            if(position==1) {
+//                                AreaSpinnerVariable.setAdapter(GazipurDistrictAreaAdapter);
+//                                searchPoint="";
+//                                searchPoint= AreaSpinnerVariable.getSelectedItem().toString();
+//
+//
+//
+//                            }
+//
+//                        }
+//
+//                        @Override
+//                        public void onNothingSelected(AdapterView<?> parent) {
+//
+//                        }
+//                    });
+//                }
+//                if(position==7)
+//                {
+//                    DistrictSpinnerVariable.setAdapter(SylhetDivisionAdapter);
+//                }
+//                if(position==0)
+//                {
+//                    DistrictSpinnerVariable.setAdapter(BarishalDivisionAdapter);
+//                }
+//                if(position==1)
+//                {
+//                    DistrictSpinnerVariable.setAdapter(ChittagongDivisionAdapter);
+//                }
+//                if(position==3)
+//                {
+//                    DistrictSpinnerVariable.setAdapter(KhulnaDivisionAdapter);
+//                }
+//                if(position==4)
+//                {
+//                    DistrictSpinnerVariable.setAdapter(MymensinghDivisionAdapter);
+//                }
+//                if(position==5)
+//                {
+//                    DistrictSpinnerVariable.setAdapter(RajshahiDivisionAdapter);
+//                }
+//                if(position==6)
+//                {
+//                    DistrictSpinnerVariable.setAdapter(RangpurDivisionAdapter);
+//                }
+//            }
+//
+//            @Override
+//            public void onNothingSelected(AdapterView<?> parent) {
+//
+//            }
+//        });
+//
+//
+//        imageButtonSearch.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                passData();
+//                //  startActivity(new Intent(search.this, SearchResults.class));
+//            }
+//        });
+//    }
+//
+//
+//    private void retrivePicture() {
+//        databaseReference.child(auth.getCurrentUser().getUid()).addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(@NonNull DataSnapshot snapshot) {
+//
+//                if (snapshot.hasChild("image")) {
+//                    String image = snapshot.child("image").getValue().toString();
+//                    Picasso.get().load(image).into(SNpropic);
+//                }
+//
+//            }
+//
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError error) {
+//
+//            }
+//        });
+//    }
+//    private void passData() {
+//
+//        Intent intent = new Intent(search.this, SearchResults.class);
+//        intent.putExtra("message", searchPoint);
+//        startActivity(intent);
+//    }
 
 
+}
 }

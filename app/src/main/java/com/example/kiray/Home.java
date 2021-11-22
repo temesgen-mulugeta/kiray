@@ -1,30 +1,43 @@
 package com.example.kiray;
 
+import android.net.Uri;
+
 class Home{
     private String title;
     private String description;
     private int rooms;
     private double price;
+    private String userId;
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
 
     private String SubCity;
     private int woreda;
 
     private String phone;
     private String photo;
+    private String id;
 
+    public String getPhoto() {
+        return photo;
+    }
 
-    @Override
-    public String toString() {
-        return "Home{" +
-                "title='" + title + '\'' +
-                ", description='" + description + '\'' +
-                ", rooms=" + rooms +
-                ", price=" + price +
-                ", SubCity='" + SubCity + '\'' +
-                ", woreda=" + woreda +
-                ", phone='" + phone + '\'' +
-                ", photo='" + photo + '\'' +
-                '}';
+    public void setPhoto(String photo) {
+        this.photo = photo;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getTitle() {
@@ -83,22 +96,7 @@ class Home{
         this.phone = phone;
     }
 
-    public String getPhoto() {
-        return photo;
-    }
 
-    public void setPhoto(String photo) {
-        this.photo = photo;
-    }
 
-    public Home(String title, String description, int rooms, double price, String subCity, int woreda, String phone, String photo) {
-        this.title = title;
-        this.description = description;
-        this.rooms = rooms;
-        this.price = price;
-        SubCity = subCity;
-        this.woreda = woreda;
-        this.phone = phone;
-        this.photo = photo;
-    }
+
 }
