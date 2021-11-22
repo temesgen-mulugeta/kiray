@@ -52,26 +52,29 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class PostAHome extends AppCompatActivity {
     FirebaseAuth mAuth;
 
-    String[] DivisionsStringVariable1;
-    String[] SylhetDivisionDistrictStringVariable1;
-    String[] DhakaDivisionDistrictStringVariable1;
-    String[] BarishalDivisionDistrictStringVariable1;
-    String[] MymensinghDivisionDistrictStringVariable1;
-    String[] KhulnaDivisionDistrictStringVariable1;
-    String[] RangpurDivisionDistrictStringVariable1;
-    String[] RajshahiDivisionDistrictStringVariable1;
-    String[] ChittagongDivisionDistrictStringVariable1;
+    String[] SubCityArray;
+    String[] woredaArray;
 
-    String[] DhakaDistrictAreaStringVariable1;
-    String[] GazipurDistrictAreaStringVariable1;
+
+//    String[] DivisionsStringVariable1;
+//    String[] SylhetDivisionDistrictStringVariable1;
+//    String[] DhakaDivisionDistrictStringVariable1;
+//    String[] BarishalDivisionDistrictStringVariable1;
+//    String[] MymensinghDivisionDistrictStringVariable1;
+//    String[] KhulnaDivisionDistrictStringVariable1;
+//    String[] RangpurDivisionDistrictStringVariable1;
+//    String[] RajshahiDivisionDistrictStringVariable1;
+//    String[] ChittagongDivisionDistrictStringVariable1;
+//    String[] DhakaDistrictAreaStringVariable1;
+//    String[] GazipurDistrictAreaStringVariable1;
 
     String[] RentRangeStringVariable1;
     String[] RoomsStringVariable1;
 
-    private Spinner DivisionSpinnerVariable1;
-    private Spinner DistrictSpinnerVariable1;
-    private Spinner AreaSpinnerVariable1;
-private  String local;
+    private Spinner subCitySpinner;
+    private Spinner woredaSpinner;
+  //  private Spinner AreaSpinnerVariable1;
+    private  String local;
     private ImageButton homeImg;
    // SocialAutoCompleteTextView description;
     private EditText description;
@@ -80,7 +83,7 @@ private  String local;
     private Uri ImageUri ;
 
     String SelectDistrict;
-    String nameHome,contactNo,beds,price,localArea,area;
+    String nameHome,contactNo,beds,price,subCity,woreda;
     String saveCurrentDate, saveCurrentTime,descrip;
     private String randomKey;
     NavigationView sidenav;
@@ -217,100 +220,105 @@ private  String local;
 
         });
 
-
-        DivisionsStringVariable1=getResources().getStringArray(R.array.DivisionsString);// ei variable e values er declare kora string recieve korbe
-        DhakaDivisionDistrictStringVariable1=getResources().getStringArray(R.array.DhakaDivisionsDistrictsString);//same
-        SylhetDivisionDistrictStringVariable1=getResources().getStringArray(R.array.SylhetDivisionDistrictString);//same
-        BarishalDivisionDistrictStringVariable1=getResources().getStringArray(R.array.BarishalDivisionsDistrictsString);
-        MymensinghDivisionDistrictStringVariable1=getResources().getStringArray(R.array.MymensinghDivisionsDistrictsString);
-        RajshahiDivisionDistrictStringVariable1=getResources().getStringArray(R.array.RajshahiDivisionsDistrictsString);
-        KhulnaDivisionDistrictStringVariable1=getResources().getStringArray(R.array.KhulnaDivisionsDistrictsString);
-        RangpurDivisionDistrictStringVariable1=getResources().getStringArray(R.array.RangpurDivisionsDistrictsString);
-        ChittagongDivisionDistrictStringVariable1=getResources().getStringArray(R.array.ChittagongDivisionsDistrictsString);
+        SubCityArray=getResources().getStringArray(R.array.SubCityString);
+        woredaArray=getResources().getStringArray(R.array.WoredaString);
+//        DivisionsStringVariable1=getResources().getStringArray(R.array.DivisionsString);// ei variable e values er declare kora string recieve korbe
+//        DhakaDivisionDistrictStringVariable1=getResources().getStringArray(R.array.DhakaDivisionsDistrictsString);//same
+//        SylhetDivisionDistrictStringVariable1=getResources().getStringArray(R.array.SylhetDivisionDistrictString);//same
+//        BarishalDivisionDistrictStringVariable1=getResources().getStringArray(R.array.BarishalDivisionsDistrictsString);
+//        MymensinghDivisionDistrictStringVariable1=getResources().getStringArray(R.array.MymensinghDivisionsDistrictsString);
+//        RajshahiDivisionDistrictStringVariable1=getResources().getStringArray(R.array.RajshahiDivisionsDistrictsString);
+//        KhulnaDivisionDistrictStringVariable1=getResources().getStringArray(R.array.KhulnaDivisionsDistrictsString);
+//        RangpurDivisionDistrictStringVariable1=getResources().getStringArray(R.array.RangpurDivisionsDistrictsString);
+//        ChittagongDivisionDistrictStringVariable1=getResources().getStringArray(R.array.ChittagongDivisionsDistrictsString);
 
         RentRangeStringVariable1=getResources().getStringArray(R.array.Rent);
         RoomsStringVariable1=getResources().getStringArray(R.array.Room);
 
-        DhakaDistrictAreaStringVariable1=getResources().getStringArray(R.array.dhakaDisArea);
-        GazipurDistrictAreaStringVariable1=getResources().getStringArray(R.array.gazipurDisArea);
+//        DhakaDistrictAreaStringVariable1=getResources().getStringArray(R.array.dhakaDisArea);
+//        GazipurDistrictAreaStringVariable1=getResources().getStringArray(R.array.gazipurDisArea);
 
-        DivisionSpinnerVariable1=(Spinner) findViewById(R.id.spinnerDivison1); // divison spinner jeta activity_search.xml e ase oita ke variable e set korbe
-        DistrictSpinnerVariable1=(Spinner) findViewById(R.id.spinnerDistrict1);//same
-        AreaSpinnerVariable1=(Spinner)findViewById(R.id.spinnerArea1);
+        subCitySpinner =(Spinner) findViewById(R.id.spinnerSubCity); // divison spinner jeta activity_search.xml e ase oita ke variable e set korbe
+        woredaSpinner =(Spinner) findViewById(R.id.spinnerWoreda);//same
+        //AreaSpinnerVariable1=(Spinner)findViewById(R.id.spinnerArea1);
 
-        ArrayAdapter<String> DivisionAdapter1 = new ArrayAdapter<String>(this, R.layout.spinnerdisplay1, R.id.spinnerDisplay1, DivisionsStringVariable1);// ei adapter division er nam gula ke spinner display layout er maddome adapter e set korbe
-        ArrayAdapter<String> SylhetDivisionAdapter1= new ArrayAdapter<String>(this, R.layout.spinnerdisplay1, R.id.spinnerDisplay1, SylhetDivisionDistrictStringVariable1);//same
-        ArrayAdapter<String> DhakaDivisionAdapter1 = new ArrayAdapter<String>(this, R.layout.spinnerdisplay1, R.id.spinnerDisplay1, DhakaDivisionDistrictStringVariable1);//same
-        ArrayAdapter<String> BarishalDivisionAdapter1 = new ArrayAdapter<String>(this, R.layout.spinnerdisplay1, R.id.spinnerDisplay1, BarishalDivisionDistrictStringVariable1);//same
-        ArrayAdapter<String> MymensinghDivisionAdapter1 = new ArrayAdapter<String>(this, R.layout.spinnerdisplay1, R.id.spinnerDisplay1, MymensinghDivisionDistrictStringVariable1);//same
-        ArrayAdapter<String> KhulnaDivisionAdapter1 = new ArrayAdapter<String>(this, R.layout.spinnerdisplay1, R.id.spinnerDisplay1, KhulnaDivisionDistrictStringVariable1);//same
-        ArrayAdapter<String> RajshahiDivisionAdapter1 = new ArrayAdapter<String>(this, R.layout.spinnerdisplay1, R.id.spinnerDisplay1, RajshahiDivisionDistrictStringVariable1);//same
-        ArrayAdapter<String> RangpurDivisionAdapter1 = new ArrayAdapter<String>(this, R.layout.spinnerdisplay1, R.id.spinnerDisplay1, RangpurDivisionDistrictStringVariable1);//same
-        ArrayAdapter<String> ChittagongDivisionAdapter1 = new ArrayAdapter<String>(this, R.layout.spinnerdisplay1, R.id.spinnerDisplay1, ChittagongDivisionDistrictStringVariable1);//same
+        ArrayAdapter<String> SubCityAdapter = new ArrayAdapter<String>(this, R.layout.spinnerdisplay1, R.id.spinnerDisplay1, SubCityArray);
+        ArrayAdapter<String> WoredaAdapter = new ArrayAdapter<String>(this, R.layout.spinnerdisplay1, R.id.spinnerDisplay1, woredaArray);
+//        ArrayAdapter<String> DivisionAdapter1 = new ArrayAdapter<String>(this, R.layout.spinnerdisplay1, R.id.spinnerDisplay1, DivisionsStringVariable1);// ei adapter division er nam gula ke spinner display layout er maddome adapter e set korbe
+//        ArrayAdapter<String> SylhetDivisionAdapter1= new ArrayAdapter<String>(this, R.layout.spinnerdisplay1, R.id.spinnerDisplay1, SylhetDivisionDistrictStringVariable1);//same
+//        ArrayAdapter<String> DhakaDivisionAdapter1 = new ArrayAdapter<String>(this, R.layout.spinnerdisplay1, R.id.spinnerDisplay1, DhakaDivisionDistrictStringVariable1);//same
+//        ArrayAdapter<String> BarishalDivisionAdapter1 = new ArrayAdapter<String>(this, R.layout.spinnerdisplay1, R.id.spinnerDisplay1, BarishalDivisionDistrictStringVariable1);//same
+//        ArrayAdapter<String> MymensinghDivisionAdapter1 = new ArrayAdapter<String>(this, R.layout.spinnerdisplay1, R.id.spinnerDisplay1, MymensinghDivisionDistrictStringVariable1);//same
+//        ArrayAdapter<String> KhulnaDivisionAdapter1 = new ArrayAdapter<String>(this, R.layout.spinnerdisplay1, R.id.spinnerDisplay1, KhulnaDivisionDistrictStringVariable1);//same
+//        ArrayAdapter<String> RajshahiDivisionAdapter1 = new ArrayAdapter<String>(this, R.layout.spinnerdisplay1, R.id.spinnerDisplay1, RajshahiDivisionDistrictStringVariable1);//same
+//        ArrayAdapter<String> RangpurDivisionAdapter1 = new ArrayAdapter<String>(this, R.layout.spinnerdisplay1, R.id.spinnerDisplay1, RangpurDivisionDistrictStringVariable1);//same
+//        ArrayAdapter<String> ChittagongDivisionAdapter1 = new ArrayAdapter<String>(this, R.layout.spinnerdisplay1, R.id.spinnerDisplay1, ChittagongDivisionDistrictStringVariable1);//same
 
 
-        ArrayAdapter<String> DhakaDistrictAreaAdapter = new ArrayAdapter<String>(this, R.layout.spinnerdisplay1, R.id.spinnerDisplay1, DhakaDistrictAreaStringVariable1);//same
-        ArrayAdapter<String> GazipurDistrictAreaAdapter = new ArrayAdapter<String>(this, R.layout.spinnerdisplay1, R.id.spinnerDisplay1, GazipurDistrictAreaStringVariable1);//same
+//        ArrayAdapter<String> DhakaDistrictAreaAdapter = new ArrayAdapter<String>(this, R.layout.spinnerdisplay1, R.id.spinnerDisplay1, DhakaDistrictAreaStringVariable1);//same
+//        ArrayAdapter<String> GazipurDistrictAreaAdapter = new ArrayAdapter<String>(this, R.layout.spinnerdisplay1, R.id.spinnerDisplay1, GazipurDistrictAreaStringVariable1);//same
 
-        DivisionSpinnerVariable1.setAdapter(DivisionAdapter1);// set kora divison gulu spinner e show korbe
+        subCitySpinner.setAdapter(SubCityAdapter);// set kora divison gulu spinner e show korbe
+        woredaSpinner.setAdapter(WoredaAdapter);
 
-        DivisionSpinnerVariable1.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        subCitySpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                if(position==2)
-                {
-                    DistrictSpinnerVariable1.setAdapter(DhakaDivisionAdapter1);
-                    DistrictSpinnerVariable1.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-                        @Override
-                        public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                            if(position==0) {
-                                AreaSpinnerVariable1.setAdapter(DhakaDistrictAreaAdapter);
-                                local = "";
-                                local= AreaSpinnerVariable1.getSelectedItem().toString();
-                            }
-                            if(position==1) {
-                                AreaSpinnerVariable1.setAdapter(GazipurDistrictAreaAdapter);
-                                local="";
-                                local= AreaSpinnerVariable1.getSelectedItem().toString();
 
-                            }
-
-                        }
-
-                        @Override
-                        public void onNothingSelected(AdapterView<?> parent) {
-
-                        }
-                    });
-                }
-                if(position==7)
-                {
-                    DistrictSpinnerVariable1.setAdapter(SylhetDivisionAdapter1);
-                }
-                if(position==0)
-                {
-                    DistrictSpinnerVariable1.setAdapter(BarishalDivisionAdapter1);
-                }
-                if(position==1)
-                {
-                    DistrictSpinnerVariable1.setAdapter(ChittagongDivisionAdapter1);
-                }
-                if(position==3)
-                {
-                    DistrictSpinnerVariable1.setAdapter(KhulnaDivisionAdapter1);
-                }
-                if(position==4)
-                {
-                    DistrictSpinnerVariable1.setAdapter(MymensinghDivisionAdapter1);
-                }
-                if(position==5)
-                {
-                    DistrictSpinnerVariable1.setAdapter(RajshahiDivisionAdapter1);
-                }
-                if(position==6)
-                {
-                    DistrictSpinnerVariable1.setAdapter(RangpurDivisionAdapter1);
-                }
+//                if(position==2)
+//                {
+//                    DistrictSpinnerVariable1.setAdapter(DhakaDivisionAdapter1);
+//                    DistrictSpinnerVariable1.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+//                        @Override
+//                        public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+//                            if(position==0) {
+//                                AreaSpinnerVariable1.setAdapter(DhakaDistrictAreaAdapter);
+//                                local = "";
+//                                local= AreaSpinnerVariable1.getSelectedItem().toString();
+//                            }
+//                            if(position==1) {
+//                                AreaSpinnerVariable1.setAdapter(GazipurDistrictAreaAdapter);
+//                                local="";
+//                                local= AreaSpinnerVariable1.getSelectedItem().toString();
+//
+//                            }
+//
+//                        }
+//
+//                        @Override
+//                        public void onNothingSelected(AdapterView<?> parent) {
+//
+//                        }
+//                    });
+//                }
+//                if(position==7)
+//                {
+//                    DistrictSpinnerVariable1.setAdapter(SylhetDivisionAdapter1);
+//                }
+//                if(position==0)
+//                {
+//                    DistrictSpinnerVariable1.setAdapter(BarishalDivisionAdapter1);
+//                }
+//                if(position==1)
+//                {
+//                    DistrictSpinnerVariable1.setAdapter(ChittagongDivisionAdapter1);
+//                }
+//                if(position==3)
+//                {
+//                    DistrictSpinnerVariable1.setAdapter(KhulnaDivisionAdapter1);
+//                }
+//                if(position==4)
+//                {
+//                    DistrictSpinnerVariable1.setAdapter(MymensinghDivisionAdapter1);
+//                }
+//                if(position==5)
+//                {
+//                    DistrictSpinnerVariable1.setAdapter(RajshahiDivisionAdapter1);
+//                }
+//                if(position==6)
+//                {
+//                    DistrictSpinnerVariable1.setAdapter(RangpurDivisionAdapter1);
+//                }
             }
 
             @Override
@@ -407,7 +415,9 @@ private  String local;
         contactNo= phoNo.getText().toString();
         beds= room.getText().toString();
         price=rent.getText().toString();
-        localArea= local;
+       // localArea= local;
+        subCity= subCitySpinner.getSelectedItem().toString();
+        woreda = woredaSpinner.getSelectedItem().toString();
 
         // localArea= subArea.getText().toString();
         descrip= description.getText().toString();
@@ -506,7 +516,8 @@ private  String local;
         map.put("homeName",nameHome);
         map.put("contactNo", contactNo);
         map.put("room",beds);
-        map.put("localArea",localArea);
+        map.put("subCity",subCity);
+        map.put("woreda",woreda);
         map.put("rentCost",price);
         map.put("description",descrip);
 

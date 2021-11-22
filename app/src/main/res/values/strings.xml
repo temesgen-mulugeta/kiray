@@ -7,6 +7,35 @@
     <string name="close">Close</string>
     <string name="app_token">pk.eyJ1IjoiYXlzaGFnYXppIiwiYSI6ImNrZXkxNXJxeDAwdXoyd28wNWpybmw1MDcifQ.cJYjWM_xg-wwPvpJEtAR5w</string>
 
+    <string-array name="SubCityString">
+
+        <item>Addis Ketema</item>
+        <item>Akaky Kaliti[</item>
+        <item>Arada</item>
+        <item>Bole</item>
+        <item>Gullele</item>
+        <item>Kirkos</item>
+        <item>Kolfe Keranio</item>
+        <item>Lideta</item>
+        <item>Nifas Silk-Lafto</item>
+        <item>Yeka</item>
+
+    </string-array>
+
+    <string-array name="WoredaString">
+
+        <item>Woreda 1</item>
+        <item>Woreda 2</item>
+        <item>Woreda 3</item>
+        <item>Woreda 4</item>
+        <item>Woreda 5</item>
+        <item>Woreda 6</item>
+        <item>Woreda 7</item>
+        <item>Woreda 8</item>
+        <item>Woreda 9</item>
+        <item>Woreda 10</item>
+
+    </string-array>
 
     <string-array name="DivisionsString">
 
@@ -129,12 +158,12 @@
     </string-array>
 
     <string-array name="Rent">
-        <item>5000-10000</item>
-        <item>11000-15000</item>
-        <item>16000-20000</item>
-        <item>21000-25000</item>
-        <item>26000-30000</item>
-        <item>31000=35000</item>
+        <item>5000-10000 ETB</item>
+        <item>11000-15000 ETB</item>
+        <item>16000-20000 ETB</item>
+        <item>21000-25000 ETB</item>
+        <item>26000-30000 ETB</item>
+        <item>31000=35000 ETB</item>
     </string-array>
 
     <string-array name="Room">
