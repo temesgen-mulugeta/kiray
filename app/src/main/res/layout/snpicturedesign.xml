@@ -4,17 +4,17 @@
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    android:background="@color/colorPrimaryDark">
+    android:background="#272727">
 
     <de.hdodenhof.circleimageview.CircleImageView
-        app:civ_border_width="2dp"
+
         android:layout_marginLeft="60dp"
         android:layout_marginTop="20dp"
         android:layout_marginBottom="20dp"
         android:id="@+id/profile_pic_SN"
         android:layout_width="150dp"
         android:layout_height="150dp"
-        android:src="@drawable/profile_pic"
+        android:src="@drawable/kiray"
         />
 
 

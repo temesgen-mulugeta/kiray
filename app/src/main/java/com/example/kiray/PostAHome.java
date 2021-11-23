@@ -290,7 +290,7 @@ public class PostAHome extends AppCompatActivity {
 
     private void addToDatabase(){
         newHome.setPhoto(url);
-        mDatabase.child("Rooms").child(uid).child(newHome.getId()).setValue(newHome);
+        mDatabase.child("Rooms").child(newHome.getId()).setValue(newHome);
 
     }
 

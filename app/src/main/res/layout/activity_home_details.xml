@@ -14,13 +14,17 @@
         android:layout_marginTop="15dp"
         android:textColor="@color/Theme"
         android:textStyle="bold"
+        android:id="@+id/header"
         android:textSize="20sp"
         android:text="HOME DETAILS" />
 
     <ImageView
+        android:layout_margin="10dp"
+        android:layout_below="@+id/header"
         android:id="@+id/HDhomePic"
         android:layout_width="match_parent"
         android:layout_height="300dp"
+        android:scaleType="centerCrop"
         android:layout_alignParentStart="true"
         android:layout_marginTop="60dp"
         app:srcCompat="@drawable/ic_home" />
@@ -31,87 +35,161 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="380dp"
+        android:layout_marginTop="20dp"
+        android:layout_below="@+id/HDhomePic"
+        android:text="APARTMENT NAME"
         android:textSize="20sp"
-        android:textStyle="bold"
-        android:text="APARTMENT NAME" />
-    <TextView
-        android:id="@+id/HDarea"
-        android:layout_width="wrap_content"
+        android:textStyle="bold" />
+    <LinearLayout
+        android:id="@+id/layout"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="410dp"
-        android:textSize="17sp"
-        android:text="APARTMENT AREA" />
+        android:layout_below="@id/HDhomeName"
+        android:layout_margin="20dp"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="440dp"
-        android:textSize="17sp"
-        android:text="RENT" />
-    <TextView
-        android:id="@+id/HDrent"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="100dp"
-        android:layout_marginTop="440dp"
-        android:textSize="17sp"
-        android:text="000" />
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:textSize="17sp"
+                android:text="Sub City  "
+                android:textStyle="bold"/>
+            <TextView
+                android:id="@+id/HDsub"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:textSize="17sp"
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="470dp"
-        android:textSize="17sp"
-        android:text="ROOMS" />
+                android:text="Sub City" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="7dp">
+            <TextView
 
-    <TextView
-        android:id="@+id/HDrooms"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="100dp"
-        android:layout_marginTop="470dp"
-        android:textSize="17sp"
-        android:text="00" />
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:textSize="17sp"
+                android:text="Woreda  "
+                android:textStyle="bold"/>
+            <TextView
+                android:id="@+id/HDworeda"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:textSize="17sp"
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="500dp"
-        android:textSize="17sp"
-        android:text="DESCRIPTIONS" />
+                android:text="Woreda" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="7dp">
+            <TextView
 
-    <TextView
-        android:id="@+id/HDdescription"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="160dp"
-        android:layout_marginTop="500dp"
-        android:layout_marginEnd="40dp"
-        android:text="Descriptions"
-        android:textSize="15sp" />
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:textSize="17sp"
+                android:text="Rooms"
+                android:textStyle="bold"/>
+            <TextView
+                android:id="@+id/HDrooms"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:textSize="17sp"
+                android:text="Rooms" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="7dp">
+            <TextView
 
-    <ImageButton
-        android:id="@+id/rent"
-        android:layout_width="150dp"
-        android:layout_height="50dp"
-        android:layout_alignParentEnd="true"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:textSize="17sp"
+                android:text="Price  "
+                android:textStyle="bold"/>
+            <TextView
+                android:id="@+id/HDprice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:textSize="17sp"
+
+                android:text="Price" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="7dp">
+            <TextView
+
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:textSize="17sp"
+                android:text="Phone  "
+                android:textStyle="bold"/>
+            <TextView
+                android:id="@+id/HDphone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:textSize="17sp"
+
+                android:text="Phone" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="7dp">
+            <TextView
+
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:textSize="17sp"
+                android:text="Description  "
+                android:textStyle="bold"/>
+
+        </LinearLayout>
+        <TextView
+            android:id="@+id/HDdesc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:textSize="17sp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="10dp"
+            android:text="Description" />
+
+    </LinearLayout>
+    <Button
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+
+        android:layout_centerHorizontal="true"
+        android:id="@+id/contact"
+        android:layout_marginBottom="20dp"
         android:layout_alignParentBottom="true"
-        android:layout_marginEnd="129dp"
-        android:layout_marginBottom="70dp"
-        android:background="@color/White"
-        android:scaleType="fitXY"
-        app:srcCompat="@drawable/rentthis" />
+        android:text="Contact"/>
+
 
 </RelativeLayout>

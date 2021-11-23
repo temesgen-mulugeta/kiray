@@ -2,12 +2,13 @@ package com.example.kiray;
 
 import android.net.Uri;
 
-class Home{
+public class Home{
     private String title;
     private String description;
     private int rooms;
     private double price;
     private String userId;
+
 
     public String getUserId() {
         return userId;

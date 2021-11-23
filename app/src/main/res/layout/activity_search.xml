@@ -19,7 +19,7 @@
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
         android:layout_width="350dp"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/pstTitle"
+
         android:layout_centerHorizontal="true"
         android:layout_marginTop="70dp"
         android:hint="Sub-City">
@@ -32,59 +32,16 @@
             android:inputType="none" />
 
     </com.google.android.material.textfield.TextInputLayout>
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/srchWoreda"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="350dp"
+    <Button
+        android:layout_width="200dp"
+        android:id="@+id/searchBtn"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/srchSubCity"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="80dp"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp"
-        android:hint="Woreda">
+        android:text="Search"/>
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="number" />
-    </com.google.android.material.textfield.TextInputLayout>
-    <com.google.android.material.textfield.TextInputLayout
 
-        android:id="@+id/srchPrice"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
-        android:layout_width="350dp"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/srchWoreda"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp"
-        android:hint="Price Range">
-
-        <AutoCompleteTextView
-
-            android:id="@+id/ddPrice"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="none" />
-
-    </com.google.android.material.textfield.TextInputLayout>
-    <com.google.android.material.textfield.TextInputLayout
-
-        android:id="@+id/srchRooms"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
-        android:layout_width="350dp"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/srchPrice"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp"
-        android:hint="No. Rooms">
-
-        <AutoCompleteTextView
-
-            android:id="@+id/ddSubCity"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="none" />
-
-    </com.google.android.material.textfield.TextInputLayout>
 
 </RelativeLayout>
     //Do not change any layout from here

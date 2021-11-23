@@ -6,6 +6,8 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -17,6 +19,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.kiray.Adapter.HomeAdapter;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -29,7 +32,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
-import HomesInFeed.HomesInFeed;
+
 import Model.HomeInFeedModel;
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -41,39 +44,62 @@ public class HomePage extends AppCompatActivity {
     DrawerLayout drawerLayout;
     FirebaseAuth mAuth;
 
+    DatabaseReference db;
+    FirebaseHelper helper;
+    RecyclerView rv;
+    EditText nameEditTxt;
+    HomeAdapter adapter;
+
     private DatabaseReference HomeRef;
     private RecyclerView recyclerView;
     RecyclerView.LayoutManager layoutManager;
-
+    BottomNavigationView bottomNavigationView;
 
     CircleImageView SNpropic;
 
     private FirebaseAuth auth;
-    private DatabaseReference databaseReference;
+    private DatabaseReference mbase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_page);
+        bottomNavigationView =findViewById(R.id.bottom_navigation);
+        mbase=  FirebaseDatabase.getInstance().getReference("Rooms");
 
-        recyclerView =findViewById(R.id.recycler_menu1);
-        recyclerView.setHasFixedSize(true);
-        layoutManager = new LinearLayoutManager( this);
-        recyclerView.setLayoutManager(layoutManager);
+        rv= (RecyclerView) findViewById(R.id.homeRV);
+        rv.setLayoutManager(new LinearLayoutManager(this));
 
+        FirebaseRecyclerOptions<Home> options
+                = new FirebaseRecyclerOptions.Builder<Home>()
+                .setQuery(mbase, Home.class)
+                .build();
+        // Connecting object of required Adapter class to
+        // the Adapter class itself
+        adapter = new HomeAdapter(options,HomePage.this);
+        // Connecting Adapter class with the Recycler view*/
+        rv.setAdapter(adapter);
 
-        //nevigation= findViewById(R.id.nevigation);
-        mAuth = FirebaseAuth.getInstance();
+        navigation();
 
+    }
+    // Function to tell the app to start getting
+    // data from database on starting of the activity
+    @Override protected void onStart()
+    {
+        super.onStart();
+        adapter.startListening();
+    }
 
-        HomeRef = FirebaseDatabase.getInstance().getReference().child("Rent_posts");
-        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
-        bottomNavigationView.setSelectedItemId(R.id.homePage);
+    // Function to tell the app to stop getting
+    // data from database on stoping of the activity
+    @Override protected void onStop()
+    {
+        super.onStop();
+        adapter.stopListening();
+    }
 
-        auth= FirebaseAuth.getInstance();
-        databaseReference=FirebaseDatabase.getInstance().getReference().child("Users");
-
-        retrivePicture();
+    private void navigation() {
 
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -101,10 +127,10 @@ public class HomePage extends AppCompatActivity {
         toolbar2 = (Toolbar) findViewById(R.id.toolbar2);
         setSupportActionBar(toolbar2);
         sidenav = (NavigationView) findViewById(R.id.sidenavmenu);
-        SNpropic=(CircleImageView)sidenav.getHeaderView(0).findViewById(R.id.profile_pic_SN);
-       // sn_name=(NavigationView)findViewById(R.id.username_sn);
+        SNpropic = (CircleImageView) sidenav.getHeaderView(0).findViewById(R.id.profile_pic_SN);
+        // sn_name=(NavigationView)findViewById(R.id.username_sn);
         //View headerView= NavigationView;
-       // view
+        // view
         drawerLayout = (DrawerLayout) findViewById(R.id.draw);
         toggle = new ActionBarDrawerToggle(this,
                 drawerLayout,
@@ -180,64 +206,6 @@ public class HomePage extends AppCompatActivity {
             }
         });
 
-
-    }
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-        FirebaseRecyclerOptions<HomeInFeedModel> option = new FirebaseRecyclerOptions.Builder<HomeInFeedModel>().setQuery(HomeRef, HomeInFeedModel.class).build();
-        FirebaseRecyclerAdapter<HomeInFeedModel, HomesInFeed> adapter = new FirebaseRecyclerAdapter<HomeInFeedModel, HomesInFeed>(option) {
-            @Override
-            protected void onBindViewHolder(@NonNull HomesInFeed holder, int position, @NonNull HomeInFeedModel model) {
-
-                holder.HIFapartmentname.setText(model.getHomeName());
-                holder.HIFrent.setText(model.getRentCost());
-                holder.HIFrooms.setText(model.getRoom());
-                holder.HIFlocalAreaName.setText(model.getLocalArea());
-                Picasso.get().load(model.getImage()).into(holder.HIFhomePic);
-
-                holder.itemView.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        Intent intent=new Intent(HomePage.this, HomeDetails.class);
-                        intent.putExtra("pId", model.getpId());
-                        startActivity(intent);
-                    }
-                });
-
-
-
-            }
-
-            @NonNull
-            @Override
-            public HomesInFeed onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-                View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.homes_in_feed_design, parent, false);
-                HomesInFeed holder = new HomesInFeed(view);
-                return holder;
-            }
-
-        };
-        recyclerView.setAdapter(adapter);
-        adapter.startListening();
-    }
-    private void retrivePicture() {
-        databaseReference.child(auth.getCurrentUser().getUid()).addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-
-                if (snapshot.hasChild("image")) {
-                    String image = snapshot.child("image").getValue().toString();
-                    Picasso.get().load(image).into(SNpropic);
-                }
-
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
     }
 }
+

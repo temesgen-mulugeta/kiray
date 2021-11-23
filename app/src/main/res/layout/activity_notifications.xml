@@ -14,8 +14,10 @@
         android:id="@+id/text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Rent requests"
-        android:textSize="30dp"
+        android:text="Notifications"
+        android:textSize="25dp"
+        android:textStyle="bold"
+        android:layout_marginTop="25dp"
         android:textAlignment="center"/>
 </RelativeLayout>
 

@@ -3,90 +3,85 @@ package com.example.kiray;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.firebase.ui.database.FirebaseRecyclerAdapter;
+import com.example.kiray.Adapter.HomeAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.squareup.picasso.Picasso;
-
-import HomesInFeed.HomesInFeed;
-import Model.HomeInFeedModel;
+import com.google.firebase.database.Query;
 
 public class SearchResults extends AppCompatActivity {
-    private DatabaseReference HomeRef;
-    private RecyclerView recyclerView;
-    RecyclerView.LayoutManager layoutManager;
-    TextView txtView;
-    String point;
+    // private Button nevigation;
+
+
+
+    RecyclerView rv;
+    HomeAdapter adapter;
+
+
+    String subCity;
+
+    private DatabaseReference mbase;
+    FirebaseAuth auth;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_search_results);
+        setContentView(R.layout.activity_home_page);
+        String uid =auth.getCurrentUser().getUid();
 
-        Bundle bundle = getIntent().getExtras();
-         point = bundle.getString("message");
-      //  TextView txtView = (TextView) findViewById(R.id.);
+        subCity=getIntent().getExtras().get("sub").toString();
 
-        //Log.d("Searcg",point);
-       // txtView.setText(message);
+        mbase= FirebaseDatabase.getInstance().getReference("Rooms");
+        Query ref= mbase.orderByChild("subCity").equalTo(subCity);
+        rv= (RecyclerView) findViewById(R.id.homeRV);
+        rv.setLayoutManager(new LinearLayoutManager(this));
 
-        recyclerView =findViewById(R.id.recycler_menu2);
-        recyclerView.setHasFixedSize(true);
-        layoutManager = new LinearLayoutManager( this);
-        recyclerView.setLayoutManager(layoutManager);
-        HomeRef = FirebaseDatabase.getInstance().getReference().child("Rent_posts");
+        FirebaseRecyclerOptions<Home> options
+                = new FirebaseRecyclerOptions.Builder<Home>()
+                .setQuery(ref, Home.class)
+                .build();
+        // Connecting object of required Adapter class to
+        // the Adapter class itself
+        adapter = new HomeAdapter(options,SearchResults.this);
+        // Connecting Adapter class with the Recycler view*/
+        rv.setAdapter(adapter);
+
+
 
     }
-    @Override
-    protected void onStart() {
+    // Function to tell the app to start getting
+    // data from database on starting of the activity
+    @Override protected void onStart()
+    {
         super.onStart();
-
-        DatabaseReference reference= FirebaseDatabase.getInstance().getReference().child("Rent_posts");
-        FirebaseRecyclerOptions<HomeInFeedModel> option =
-                new FirebaseRecyclerOptions.Builder<HomeInFeedModel>().setQuery(reference.orderByChild("localArea").equalTo(point), HomeInFeedModel.class).build();
-
-
-        //FirebaseRecyclerOptions<HomeInFeedModel> option = new FirebaseRecyclerOptions.Builder<HomeInFeedModel>().setQuery(HomeRef, HomeInFeedModel.class).build();
-        FirebaseRecyclerAdapter<HomeInFeedModel, HomesInFeed> adapter = new FirebaseRecyclerAdapter<HomeInFeedModel, HomesInFeed>(option) {
-            @Override
-            protected void onBindViewHolder(@NonNull HomesInFeed holder, int position, @NonNull HomeInFeedModel model) {
-
-                holder.HIFapartmentname.setText(model.getHomeName());
-                holder.HIFrent.setText(model.getRentCost());
-                holder.HIFrooms.setText(model.getRoom());
-                holder.HIFlocalAreaName.setText(model.getLocalArea());
-                Picasso.get().load(model.getImage()).into(holder.HIFhomePic);
-
-                holder.itemView.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        Intent intent=new Intent(SearchResults.this, HomeDetails.class);
-                        intent.putExtra("pId", model.getpId());
-                        startActivity(intent);
-                    }
-                });
-
-            }
-
-            @NonNull
-            @Override
-            public HomesInFeed onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-                View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.homes_in_feed_design, parent, false);
-                HomesInFeed holder = new HomesInFeed(view);
-                return holder;
-            }
-
-        };
-        recyclerView.setAdapter(adapter);
         adapter.startListening();
     }
+
+    // Function to tell the app to stop getting
+    // data from database on stoping of the activity
+    @Override protected void onStop()
+    {
+        super.onStop();
+        adapter.stopListening();
+    }
+
+
 }
+
