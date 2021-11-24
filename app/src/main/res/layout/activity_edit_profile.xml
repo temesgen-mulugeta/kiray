@@ -58,6 +58,7 @@
             android:layout_marginBottom="20dp"
             android:id="@+id/pro_pic"
             android:layout_width="150dp"
+            android:visibility="gone"
             android:layout_height="150dp"
             android:src="@drawable/profile_pic"
             />
@@ -66,6 +67,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Change Photo"
+            android:visibility="gone"
             android:layout_gravity="center"
             android:id="@+id/cngPic"
             android:textSize="18sp"/>

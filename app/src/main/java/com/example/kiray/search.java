@@ -114,7 +114,7 @@ public class search extends AppCompatActivity {
                             Toast.LENGTH_SHORT);
                 }
                 else{
-                    Intent searchInt = new Intent(search.this,SearchResults.class);
+                    Intent searchInt = new Intent(search.this,SearchRes.class);
                     searchInt.putExtra("sub",subc);
                     startActivity(searchInt);
                 }
@@ -132,36 +132,43 @@ navigation();
 
     private void navigation() {
 
+        BottomNavigationView bottomNavigationView=findViewById(R.id.bottom_navigation);
+        bottomNavigationView.setSelectedItemId(R.id.search);
+        auth= FirebaseAuth.getInstance();
+        databaseReference= FirebaseDatabase.getInstance().getReference().child("Users");
+
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-                switch (menuItem.getItemId()) {
+                switch (menuItem.getItemId()){
                     case R.id.homePage:
-                        overridePendingTransition(0, 0);
+                        startActivity(new Intent(getApplicationContext(), HomePage.class));
+                        overridePendingTransition(0,0);
                         return true;
 
                     case R.id.search:
-
                         return true;
 
                     case R.id.postAHome:
                         startActivity(new Intent(getApplicationContext(), PostAHome.class));
-                        overridePendingTransition(0, 0);
+                        overridePendingTransition(0,0);
                         return true;
 
+                    /*case R.id.settings:
+                        startActivity(new Intent(getApplicationContext(), Settings.class));
+                        overridePendingTransition(0,0);
+                        return true;*/
                 }
                 return false;
             }
         });
 
+
         Toolbar toolbar2;
         toolbar2 = (Toolbar) findViewById(R.id.toolbar2);
         setSupportActionBar(toolbar2);
         sidenav = (NavigationView) findViewById(R.id.sidenavmenu);
-        SNpropic = (CircleImageView) sidenav.getHeaderView(0).findViewById(R.id.profile_pic_SN);
-        // sn_name=(NavigationView)findViewById(R.id.username_sn);
-        //View headerView= NavigationView;
-        // view
+        SNpropic=(CircleImageView)sidenav.getHeaderView(0).findViewById(R.id.profile_pic_SN);
         drawerLayout = (DrawerLayout) findViewById(R.id.draw);
         toggle = new ActionBarDrawerToggle(this,
                 drawerLayout,
@@ -171,6 +178,8 @@ navigation();
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
 
+
+
         sidenav.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
@@ -178,7 +187,7 @@ navigation();
                     case R.id.profileSN:
                         //Toast.makeText(getApplicationContext(), "Profile will Open", Toast.LENGTH_LONG).show();
                         drawerLayout.closeDrawer(GravityCompat.START);
-                        Intent intent = new Intent(search.this, Profile.class);
+                        Intent intent= new Intent(search.this,Profile.class);
                         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         startActivity(intent);
 
@@ -186,7 +195,7 @@ navigation();
                     case R.id.mypostsSN:
                         //Toast.makeText(getApplicationContext(), "Myposts will Open", Toast.LENGTH_LONG).show();
                         drawerLayout.closeDrawer(GravityCompat.START);
-                        Intent intent1 = new Intent(search.this, MyPosts.class);
+                        Intent intent1= new Intent(search.this,MyPosts.class);
                         intent1.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         startActivity(intent1);
 
@@ -194,7 +203,7 @@ navigation();
                     case R.id.notificationSN:
                         //Toast.makeText(getApplicationContext(), "Notifications will Open", Toast.LENGTH_LONG).show();
                         drawerLayout.closeDrawer(GravityCompat.START);
-                        Intent intent2 = new Intent(search.this, Notifications.class);
+                        Intent intent2= new Intent(search.this,Notifications.class);
                         intent2.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         startActivity(intent2);
 
@@ -202,7 +211,7 @@ navigation();
                     case R.id.settingsSN:
                         //Toast.makeText(getApplicationContext(), "Settings will Open", Toast.LENGTH_LONG).show();
                         drawerLayout.closeDrawer(GravityCompat.START);
-                        Intent intent3 = new Intent(search.this, Settings.class);
+                        Intent intent3= new Intent(search.this,Settings.class);
                         intent3.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         startActivity(intent3);
 
@@ -226,16 +235,16 @@ navigation();
                     case R.id.aboutusSN:
                         // Toast.makeText(getApplicationContext(), "About Us will Open", Toast.LENGTH_LONG).show();
                         drawerLayout.closeDrawer(GravityCompat.START);
-                        Intent intent4 = new Intent(search.this, AboutUs.class);
+                        Intent intent4= new Intent(search.this,AboutUs.class);
                         intent4.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         startActivity(intent4);
 
                         break;
-
                 }
                 return true;
             }
         });
+
 
     }
 }
